@@ -1,0 +1,11 @@
+[azure]
+disabled = false
+
+[cmd_duration]
+min_time = 0 #show command duration only it it exceeds this amount in ms
+
+[directory]
+truncation_symbol = '../'
+
+[os]
+disabled = false
