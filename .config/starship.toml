@@ -1,0 +1,17 @@
+[shell]
+disabled = false
+
+[time]
+disabled = false
+
+[os]
+disabled = false
+
+[directory]
+truncation_symbol = '../'
+
+[cmd_duration]
+min_time = 100 # diplay execution duration if exceeds this value (ms)
+
+[azure]
+disabled = false
