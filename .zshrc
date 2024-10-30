@@ -59,6 +59,12 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dpsa="docker ps -a"
 	alias drm="docker rm"
 	alias drmf="docker rm -f"
+
+	alias dcu="docker compose up"
+	alias dcud="docker compose up -d"
+	alias dcd="docker compose down"
+	alias dcps="docker compose ps"
+	alias dcpsa="docker compose ps -a"
 fi
 
 # configure k8s
