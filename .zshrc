@@ -22,7 +22,7 @@ bindkey "^[[1;5D" backward-word
 # configure general aliases
 alias ll="ls -l"
 alias lsa="ls -a"
-alias lla="ll -a"
+alias lla="ls -la"
 
 # enable starship
 USE_STARSHIP=false
