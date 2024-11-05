@@ -21,6 +21,8 @@ bindkey "^[[1;5D" backward-word
 
 # configure general aliases
 alias ll="ls -l"
+alias lsa="ls -a"
+alias lla="ll -a"
 
 # enable starship
 USE_STARSHIP=false
@@ -52,6 +54,7 @@ fi
 # configure k8s
 if [[ $(command -v kubectl) == /* ]]; then
 	source <(kubectl completion zsh)
+
 	alias k="kubectl"
 	alias kg="kubectl get"
 	alias kd="kubectl describe"
