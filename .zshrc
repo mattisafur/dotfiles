@@ -7,8 +7,8 @@ setopt sharehistory        # share history accross all shell sessions
 bindkey -e
 
 # command completion
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
+autoload -U bashcompinit && bashcompinit
 
 # configure history
 HISTFILE=1000             # max history entries
@@ -72,6 +72,10 @@ fi
 
 # configure terraform
 if [[ $(command -v terraform) == /* ]]; then
-	autoload -U +X bashcompinit && bashcompinit
 	complete -o nospace -C /usr/bin/terraform terraform
+fi
+
+# configure aws cli
+if [[ $(command -v aws) == /* ]] && [[ $(command -v aws_completer) == /* ]]; then
+	complete -C $(command -v aws_completer) aws
 fi
