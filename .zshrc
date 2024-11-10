@@ -69,6 +69,17 @@ fi
 # configure helm
 if [[ $(command -v helm) == /* ]]; then
 	source <(helm completion zsh)
+
+	alias h="helm"
+fi
+
+# configure minikube
+if [[ $(command -v minikube) == /* ]]; then
+	source <(minikube completion zsh)
+
+	alias m="minikube"
+	alias ms="minikube service"
+	alias msl="minikube service list"
 fi
 
 # configure terraform
