@@ -23,6 +23,7 @@ bindkey "^[[1;5D" backward-word
 alias ll="ls -l"
 alias lsa="ls -a"
 alias lla="ls -la"
+alias cdtemp="cd $(mktemp -d)"
 
 # enable starship
 USE_STARSHIP=false
