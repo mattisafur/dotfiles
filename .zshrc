@@ -78,8 +78,13 @@ if [[ $(command -v minikube) == /* ]]; then
 	source <(minikube completion zsh)
 
 	alias m="minikube"
-	alias ms="minikube service"
-	alias msl="minikube service list"
+	alias mstrt="minikube start"
+	alias mstp="minikube stop"
+	alias mdel="minikube delete"
+	alias mdash="minikube dashboard"
+	alias msvc="minikube service"
+	alias msvcl="minikube service list"
+	alias mtun="minikube tunnel"
 fi
 
 # configure terraform
