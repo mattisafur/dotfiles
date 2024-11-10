@@ -71,6 +71,10 @@ if [[ $(command -v helm) == /* ]]; then
 	source <(helm completion zsh)
 
 	alias h="helm"
+	alias hi="helm install"
+	alias hu="helm upgrade"
+	alias hui="helm pugrade -i"
+	alias hunin="helm uninstall"
 fi
 
 # configure minikube
