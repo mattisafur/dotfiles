@@ -37,6 +37,7 @@ unset USE_STARSHIP
 
 # configure docker
 if [[ $(command -v docker) == /* ]]; then
+	alias d="docker"
 	alias dr="docker run"
 	alias dps="docker ps"
 	alias dpsa="docker ps -a"
