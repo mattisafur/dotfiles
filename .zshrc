@@ -27,7 +27,7 @@ alias cdtemp="cd $(mktemp -d)"
 
 # enable starship
 USE_STARSHIP=false
-if [[ $USE_STARSHIP == true ]] && [[ $(command -v starship) == /* ]]; then
+if [[ $USE_STARSHIP == true && $(command -v starship) == /* ]]; then
 	eval "$(starship init zsh)"
 else
 	autoload -Uz promptinit
@@ -74,7 +74,7 @@ if [[ $(command -v helm) == /* ]]; then
 	alias h="helm"
 	alias hi="helm install"
 	alias hu="helm upgrade"
-	alias hui="helm pugrade -i"
+	alias hui="helm upgrade -i"
 	alias hunin="helm uninstall"
 fi
 
@@ -99,6 +99,6 @@ if [[ $(command -v terraform) == /* ]]; then
 fi
 
 # configure aws cli
-if [[ $(command -v aws) == /* ]] && [[ $(command -v aws_completer) == /* ]]; then
+if [[ $(command -v aws) == /* && $(command -v aws_completer) == /* ]]; then
 	complete -C $(command -v aws_completer) aws
 fi
