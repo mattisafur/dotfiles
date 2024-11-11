@@ -86,6 +86,7 @@ if [[ $(command -v minikube) == /* ]]; then
 	alias mstrt="minikube start"
 	alias mstp="minikube stop"
 	alias mdel="minikube delete"
+	alias mstat="minikube status"
 	alias mdash="minikube dashboard"
 	alias msvc="minikube service"
 	alias msvcl="minikube service list"
