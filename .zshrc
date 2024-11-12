@@ -20,11 +20,17 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 # configure general aliases
+alias ls="ls --color=auto"
 alias ll="ls -l"
 alias lsa="ls -a"
 alias lla="ls -la"
 alias mkcd='() { mkdir $1 && cd $1 }'
 alias cdtemp="cd $(mktemp -d)"
+
+# configure ls colors
+if [[ $(command -v dircolors) == /* ]]; then
+	source <(dircolors)
+fi
 
 # enable starship
 USE_STARSHIP=false
