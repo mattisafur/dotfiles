@@ -23,6 +23,7 @@ bindkey "^[[1;5D" backward-word
 alias ll="ls -l"
 alias lsa="ls -a"
 alias lla="ls -la"
+alias mkcd="() { mkdir \$1 && cd \$1 }"
 alias cdtemp="cd $(mktemp -d)"
 
 # enable starship
@@ -96,6 +97,11 @@ fi
 # configure terraform
 if [[ $(command -v terraform) == /* ]]; then
 	complete -o nospace -C /usr/bin/terraform terraform
+fi
+
+# configure opentofu
+if [[ $(command -v tofu) == /* ]]; then
+	complete -o nospace -C /usr/bin/tofu tofu
 fi
 
 # configure aws cli
