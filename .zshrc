@@ -83,6 +83,7 @@ if [[ $(command -v helm) == /* ]]; then
 	alias hu="helm upgrade"
 	alias hui="helm upgrade -i"
 	alias hunin="helm uninstall"
+	alias hls="helm list"
 fi
 
 # configure minikube
