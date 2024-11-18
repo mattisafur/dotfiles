@@ -7,7 +7,7 @@ setopt sharehistory        # share history accross all shell sessions
 bindkey -e
 
 # command completion
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -C
 autoload -U bashcompinit && bashcompinit
 
 # configure history
