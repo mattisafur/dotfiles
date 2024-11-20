@@ -13,7 +13,7 @@ autoload -U bashcompinit && bashcompinit
 # configure history
 HISTSIZE=1000             # max history entries
 SAVEHIST=1000             # max history saved to file
-HISTFILE=~/.zsh_history # history file path
+HISTFILE=~/.zsh_history   # history file path
 
 # configure word navigation
 bindkey "^[[1;5C" forward-word
