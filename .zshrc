@@ -69,8 +69,12 @@ if [[ $(command -v kubectl) == /* ]]; then
 	alias kg="kubectl get"
 	alias kd="kubectl describe"
 	alias kl="kubectl logs"
+	alias klf="kubectl logs -f"
 	alias kc="kubectl create"
 	alias ka="kubectl apply"
+	alias kexe="kubectl exec"
+	alias katt="kubectl attach"
+	alias kdel="kubectl delete"
 	alias kdbg="kubectl debug"
 	alias kconf="kubectl config"
 fi
