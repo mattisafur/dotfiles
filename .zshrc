@@ -1,7 +1,7 @@
 # zsh options
-setopt interactivecomments # allow comments in interactive shell
-setopt histignorealldups   # pervent duplicates in history file
-setopt sharehistory        # share history accross all shell sessions
+setopt INTERACTIVE_COMMENTS # allow comments in interactive shell
+setopt HIST_IGNORE_DUPS     # pervent duplicates in history file
+setopt SHARE_HISTORY        # share history accross all shell sessions
 
 # use emacs keybinds
 bindkey -e
