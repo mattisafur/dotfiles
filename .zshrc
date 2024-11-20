@@ -47,6 +47,7 @@ unset USE_STARSHIP
 if [[ $(command -v docker) == /* ]]; then
 	alias d="docker"
 	alias dr="docker run"
+	alias da="docker attach"
 	alias dps="docker ps"
 	alias dpsa="docker ps -a"
 	alias drm="docker rm"
