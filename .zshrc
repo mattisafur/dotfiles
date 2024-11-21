@@ -85,6 +85,8 @@ if [[ $(command -v helm) == /* ]]; then
 	alias hu="helm upgrade"
 	alias hui="helm upgrade -i"
 	alias hunin="helm uninstall"
+	alias hs="helm show"
+	alisa hg="helm get"
 	alias hls="helm list"
 fi
 
