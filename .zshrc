@@ -45,7 +45,6 @@ unset USE_STARSHIP
 
 # configure docker
 if [[ $(command -v docker) == /* ]]; then
-	alias d="docker"
 	alias dr="docker run"
 	alias da="docker attach"
 	alias dps="docker ps"
@@ -65,7 +64,6 @@ fi
 if [[ $(command -v kubectl) == /* ]]; then
 	source <(kubectl completion zsh)
 
-	alias k="kubectl"
 	alias kg="kubectl get"
 	alias kd="kubectl describe"
 	alias kl="kubectl logs"
@@ -83,7 +81,6 @@ fi
 if [[ $(command -v helm) == /* ]]; then
 	source <(helm completion zsh)
 
-	alias h="helm"
 	alias hi="helm install"
 	alias hu="helm upgrade"
 	alias hui="helm upgrade -i"
@@ -95,7 +92,6 @@ fi
 if [[ $(command -v minikube) == /* ]]; then
 	source <(minikube completion zsh)
 
-	alias m="minikube"
 	alias mstr="minikube start"
 	alias mstp="minikube stop"
 	alias mdel="minikube delete"
