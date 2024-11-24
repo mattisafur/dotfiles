@@ -119,3 +119,8 @@ fi
 if [[ $(command -v aws) == /* && $(command -v aws_completer) == /* ]]; then
 	complete -C $(command -v aws_completer) aws
 fi
+
+# configure golang
+if [[ -d "/usr/local/go" ]]; then
+	export PATH=$PATH:"/usr/local/go/bin"
+fi
