@@ -37,8 +37,7 @@ USE_STARSHIP=false
 if [[ $USE_STARSHIP == true && $(command -v starship) == /* ]]; then
 	eval "$(starship init zsh)"
 else
-	autoload -Uz promptinit
-	promptinit
+	autoload -Uz promptinit && promptinit
 	prompt adam1
 fi
 unset USE_STARSHIP
