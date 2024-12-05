@@ -1,19 +1,19 @@
 # zsh options
-setopt INTERACTIVE_COMMENTS # allow comments in interactive shell
-setopt HIST_IGNORE_DUPS     # pervent duplicates in history file
-setopt SHARE_HISTORY        # share history accross all shell sessions
+setopt INTERACTIVE_COMMENTS  # allow comments in interactive shell
+setopt HIST_IGNORE_DUPS      # pervent duplicates in history file
+setopt SHARE_HISTORY         # share history accross all shell sessions
 
 # use emacs keybinds
 bindkey -e
 
 # command completion
-autoload -Uz compinit && compinit -C
-autoload -U bashcompinit && bashcompinit
+autoload -Uz compinit && compinit -C      # enable zsh completion
+autoload -U bashcompinit && bashcompinit  # enable bash-style completion
 
 # configure history
-HISTSIZE=1000             # max history entries
-SAVEHIST=1000             # max history saved to file
-HISTFILE=~/.zsh_history   # history file path
+HISTSIZE=1000            # max history entries
+SAVEHIST=1000            # max history saved to file
+HISTFILE=~/.zsh_history  # history file path
 
 # configure word navigation
 bindkey "^[[1;5C" forward-word
