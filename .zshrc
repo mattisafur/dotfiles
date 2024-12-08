@@ -1,48 +1,54 @@
-# zsh options
-setopt INTERACTIVE_COMMENTS  # allow comments in interactive shell
-setopt HIST_IGNORE_DUPS      # pervent duplicates in history file
-setopt SHARE_HISTORY         # share history accross all shell sessions
+# general options
+setopt INTERACTIVE_COMMENTS  # allow comments in terminal
+setopt MAGIC_EQUAL_SUBST     # enable filename expansion for arguments of the form `anything=expression`
+setopt NOTIFY                # report the status of background jobs immediately
+setopt NUMERIC_GLOB_SORT     # sort filenames numerically when it makes sense
 
-# use emacs keybinds
+# history
+setopt SHARE_HISTORY           # share history between sessions
+setopt HIST_IGNORE_SPACE       # don't add command prefixed with space to history
+setopt HIST_IGNORE_ALL_DUPS    # ignore all duplicates in history
+setopt HIST_VERIFY             # expand history before running comand `sudo !!` will be expended to `sudo <last command>` before executing it
+
+HISTSIZE=1000                  # history size
+SAVEHIST=$HISTSIZE             # history size to be committed to history file
+HISTFILE=~/.history            # history file location
+
+# ls colors
+if [[ $(command -v dircolors) == "/*" ]]; then
+	source "$(dircolors)"
+fi
+
+# completion
+autoload -Uz compinit
+compinit
+zstyle ':completion:*:*:*:*:*' menu select               # allow completion selection using arrow keys
+zstyle ':completion:*' format 'Completing %d'            # add completion infomation to suggestions
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"  # colorize completion
+zstyle ':completion:*' group-name ''                     # ungroup completion results
+
+# prompt
+autoload -Uz promptinit && promptinit && prompt adam1
+
+# keybinds
 bindkey -e
+bindkey "^[[1;5C" forward-word   # ctrl + ->
+bindkey "^[[1;6D" backward-word  # ctrl + <-
 
-# command completion
-autoload -Uz compinit && compinit -C      # enable zsh completion
-autoload -U bashcompinit && bashcompinit  # enable bash-style completion
-
-# configure history
-HISTSIZE=1000            # max history entries
-SAVEHIST=1000            # max history saved to file
-HISTFILE=~/.zsh_history  # history file path
-
-# configure word navigation
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-
-# configure general aliases
-alias ls="ls --color=auto"
-alias ll="ls -l"
+# general aliases
+alias ls="ls --color"
 alias lsa="ls -a"
+alias ll="ls -l"
 alias lla="ls -la"
 alias mkcd='() { mkdir $1 && cd $1 }'
 alias cdtemp='cd $(mktemp -d)'
 
-# configure ls colors
-if [[ $(command -v dircolors) == /* ]]; then
-	source <(dircolors)
-fi
 
-# enable starship
-USE_STARSHIP=false
-if [[ $USE_STARSHIP == true && $(command -v starship) == /* ]]; then
-	eval "$(starship init zsh)"
-else
-	autoload -Uz promptinit && promptinit
-	prompt adam1
-fi
-unset USE_STARSHIP
+# #################################
+# ## Tool specific configuration ##
+# #################################
 
-# configure docker
+# docker
 if [[ $(command -v docker) == /* ]]; then
 	alias dr="docker run"
 	alias da="docker attach"
@@ -59,7 +65,7 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dcpsa="docker compose ps -a"
 fi
 
-# configure k8s
+# k8s
 if [[ $(command -v kubectl) == /* ]]; then
 	source <(kubectl completion zsh)
 
@@ -76,7 +82,7 @@ if [[ $(command -v kubectl) == /* ]]; then
 	alias kconf="kubectl config"
 fi
 
-# configure helm
+# helm
 if [[ $(command -v helm) == /* ]]; then
 	source <(helm completion zsh)
 
@@ -89,7 +95,7 @@ if [[ $(command -v helm) == /* ]]; then
 	alias hls="helm list"
 fi
 
-# configure minikube
+# minikube
 if [[ $(command -v minikube) == /* ]]; then
 	source <(minikube completion zsh)
 
@@ -104,22 +110,22 @@ if [[ $(command -v minikube) == /* ]]; then
 	alias mdash="minikube dashboard"
 fi
 
-# configure terraform
+# terraform
 if [[ $(command -v terraform) == /* ]]; then
 	complete -o nospace -C /usr/bin/terraform terraform
 fi
 
-# configure opentofu
+# opentofu
 if [[ $(command -v tofu) == /* ]]; then
 	complete -o nospace -C /usr/bin/tofu tofu
 fi
 
-# configure aws cli
+# aws cli
 if [[ $(command -v aws) == /* && $(command -v aws_completer) == /* ]]; then
 	complete -C $(command -v aws_completer) aws
 fi
 
-# configure golang
+# golang
 if [[ -d "/usr/local/go" ]]; then
 	export PATH=$PATH:"/usr/local/go/bin"
 fi
