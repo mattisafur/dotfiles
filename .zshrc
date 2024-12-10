@@ -38,12 +38,20 @@ bindkey "^[[1;5C" forward-word   # ctrl + ->
 bindkey "^[[1;5D" backward-word  # ctrl + <-
 
 # general aliases
-alias ls="ls --color"
 alias lsa="ls -a"
 alias ll="ls -l"
 alias lla="ls -la"
 alias mkcd='() { mkdir -p $1 && cd $1 }'
 alias cdtemp='cd $(mktemp -d)'
+
+# color aliases
+alias ls="ls --color"
+alias grep="grep --color"
+alias egrep="egrep --color"
+alias fgrep="fgrep --color"
+alias rgrep="rgrep --color"
+alias diff="diff --color"
+alias ip="ip --color"
 
 
 # #################################
