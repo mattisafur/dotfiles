@@ -22,6 +22,8 @@ fi
 # completion
 autoload -Uz compinit
 compinit
+autoload bashcompinit
+bashcompinit
 zstyle ':completion:*:*:*:*:*' menu select               # allow completion selection using arrow keys
 zstyle ':completion:*' format 'Completing %d'            # add completion infomation to suggestions
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"  # colorize completion
