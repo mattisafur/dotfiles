@@ -40,7 +40,7 @@ alias ls="ls --color"
 alias lsa="ls -a"
 alias ll="ls -l"
 alias lla="ls -la"
-alias mkcd='() { mkdir $1 && cd $1 }'
+alias mkcd='() { mkdir -p $1 && cd $1 }'
 alias cdtemp='cd $(mktemp -d)'
 
 
