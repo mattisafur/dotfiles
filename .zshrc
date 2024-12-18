@@ -162,4 +162,14 @@ fi
 # golang
 if [[ -d "/usr/local/go" ]]; then
 	export PATH=$PATH:"/usr/local/go/bin"
+	export GOPATH="$HOME/go/bin"
+fi
+
+# rust
+if [[ $(command -v rustup) == /* ]]; then
+	_complete_rustup() {
+		unfunction $0
+		source <(rustup completions zsh)
+	}
+	compdef _complete_rustup rustup
 fi
