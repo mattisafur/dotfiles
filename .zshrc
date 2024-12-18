@@ -77,11 +77,11 @@ fi
 
 # k8s
 if [[ $(command -v kubectl) == /* ]]; then
-	kubectl() {
+	_complete_kubectl() {
 		unfunction $0
 		source <(kubectl completion zsh)
 	}
-	compdef kubectl kubectl
+	compdef _complete_kubectl kubectl
 
 	alias kg="kubectl get"
 	alias kd="kubectl describe"
@@ -98,11 +98,11 @@ fi
 
 # helm
 if [[ $(command -v helm) == /* ]]; then
-	helm() {
+	_complete_helm() {
 		unfunction $0
 		source <(helm completion zsh)
 	}
-	compdef helm helm
+	compdef _complete_helm helm
 
 	alias hi="helm install"
 	alias hu="helm upgrade"
@@ -115,11 +115,11 @@ fi
 
 # minikube
 if [[ $(command -v minikube) == /* ]]; then
-	minikube() {
+	_complete_minikube() {
 		unfunction $0
 		source <(minikube completion zsh)
 	}
-	compdef minikube minikube
+	compdef _complete_minikube minikube
 
 	alias mstr="minikube start"
 	alias mstp="minikube stop"
@@ -134,29 +134,29 @@ fi
 
 # terraform
 if [[ $(command -v terraform) == /* ]]; then
-	terraform() {
+	_complete_terraform() {
 		unfunction $0
 		complete -o nospace -C /usr/bin/terraform terraform
 	}
-	compdef terraform terraform
+	compdef _complete_terraform terraform
 fi
 
 # opentofu
 if [[ $(command -v tofu) == /* ]]; then
-	tofu() {
+	_complete_tofu() {
 		unfunction $0
 		complete -o nospace -C /usr/bin/tofu tofu
 	}
-	compdef tofu tofu
+	compdef _complete_tofu tofu
 fi
 
 # aws cli
 if [[ $(command -v aws) == /* && $(command -v aws_completer) == /* ]]; then
-	aws() {
+	_complete_aws() {
 		unfunction $0
 		complete -C $(command -v aws_completer) aws
 	}
-	compdef aws aws
+	compdef _complete_aws aws
 fi
 
 # golang
