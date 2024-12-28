@@ -45,13 +45,13 @@ alias mkcd='() { mkdir -p $1 && cd $1 }'
 alias cdtemp='cd $(mktemp -d)'
 
 # color aliases
-alias ls="ls --color"
+alias ls="ls --color=auto"
 alias grep="grep --color"
 alias egrep="egrep --color"
 alias fgrep="fgrep --color"
 alias rgrep="rgrep --color"
 alias diff="diff --color"
-alias ip="ip --color"
+alias ip="ip --color=auto"
 
 
 # #################################
