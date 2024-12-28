@@ -162,7 +162,9 @@ fi
 # golang
 if [[ -d "/usr/local/go" ]]; then
 	export PATH=$PATH:"/usr/local/go/bin"
-	export GOPATH="$HOME/go/bin"
+
+	export GOPATH="$HOME/go"
+	export PATH=$PATH:"$GOPATH/bin"
 fi
 
 # rust
@@ -172,4 +174,9 @@ if [[ $(command -v rustup) == /* ]]; then
 		source <(rustup completions zsh)
 	}
 	compdef _complete_rustup rustup
+fi
+
+# tmux
+if [[ $(command -v tmux) == /* ]]; then
+	alias ta="tmux a"
 fi
