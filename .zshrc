@@ -66,6 +66,7 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dpsa="docker ps -a"
 	alias drm="docker rm"
 	alias drmf="docker rm -f"
+	alias dimg="docker image"
 
 	alias dc="docker compose"
 	alias dcu="docker compose up"
@@ -73,6 +74,11 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dcd="docker compose down"
 	alias dcps="docker compose ps"
 	alias dcpsa="docker compose ps -a"
+
+	alias drmall='docker ps -qa | xargs docker rm'
+	alias drmallf='docker ps -qa | xargs docker rm -f'
+	alias dimgrmall='docker image ls -q | xargs docker image rm'
+	alias dimgrmallf='docker image ls -q | xargs docker image rm -f'
 fi
 
 # k8s
@@ -94,6 +100,10 @@ if [[ $(command -v kubectl) == /* ]]; then
 	alias kdel="kubectl delete"
 	alias kdbg="kubectl debug"
 	alias kconf="kubectl config"
+
+	alias kdelallpvc="kubectl get persistentvolumeclaim -o name | xargs kubectl delete"
+	alias kgsd="kubectl get secrets -o jsonpath='{.data}'"
+	alias kgsdd='() { kubectl get secrets $1 -o jsonpath="{.data.$2}" | base64 --decode && echo }'
 fi
 
 # helm
