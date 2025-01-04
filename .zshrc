@@ -20,8 +20,7 @@ if [[ $(command -v dircolors) == "/*" ]]; then
 fi
 
 # completion
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 autoload bashcompinit
 bashcompinit
 zstyle ':completion:*:*:*:*:*' menu select               # allow completion selection using arrow keys
