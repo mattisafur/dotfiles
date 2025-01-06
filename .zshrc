@@ -188,3 +188,4 @@ fi
 if [[ $(command -v tmux) == /* ]]; then
 	alias ta="tmux a"
 fi
+
