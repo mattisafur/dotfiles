@@ -59,9 +59,12 @@ alias ip="ip --color=auto"
 # docker
 if [[ $(command -v docker) == /* ]]; then
 	alias dr="docker run"
+	alias ds="docker start"
 	alias da="docker attach"
+	alias dexe="docker exec"
 	alias dps="docker ps"
 	alias dpsa="docker ps -a"
+	alias dl="docker logs"
 	alias drm="docker rm"
 	alias drmf="docker rm -f"
 	alias dimg="docker image"
