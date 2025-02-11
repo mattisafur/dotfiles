@@ -56,10 +56,21 @@ alias ip="ip --color=auto"
 # ## Tool specific configuration ##
 # #################################
 
+# git
+if [[ $(command -v git) == /* ]]; then
+	alias ga="git add"
+	alias gc="git commit"
+	alias gstat="git status"
+	alias gl="git log"
+	alias glg="git log --graph"
+	alias glga="git log --graph --all"
+fi
+
 # docker
 if [[ $(command -v docker) == /* ]]; then
 	alias dr="docker run"
-	alias ds="docker start"
+	alias dstr="docker start"
+	alias dstp="docker stop"
 	alias da="docker attach"
 	alias dexe="docker exec"
 	alias dps="docker ps"
@@ -68,6 +79,7 @@ if [[ $(command -v docker) == /* ]]; then
 	alias drm="docker rm"
 	alias drmf="docker rm -f"
 	alias dimg="docker image"
+	alias dvol="docker volume"
 
 	alias dc="docker compose"
 	alias dcu="docker compose up"
@@ -75,6 +87,10 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dcd="docker compose down"
 	alias dcps="docker compose ps"
 	alias dcpsa="docker compose ps -a"
+	alias dcl="docker compose logs"
+	alias dclf="docker compose logs -f"
+	alias dcp="docker compose pull"
+	alias dcstat="docker compose stats"
 
 	alias drmall='docker ps -qa | xargs docker rm'
 	alias drmallf='docker ps -qa | xargs docker rm -f'
