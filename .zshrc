@@ -81,6 +81,7 @@ if [[ $(command -v docker) == /* ]]; then
 	alias drmf="docker rm -f"
 	alias dimg="docker image"
 	alias dvol="docker volume"
+	alias dnet="docker network"
 
 	alias dc="docker compose"
 	alias dcu="docker compose up"
