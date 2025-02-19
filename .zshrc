@@ -3,6 +3,7 @@ setopt INTERACTIVE_COMMENTS  # allow comments in terminal
 setopt MAGIC_EQUAL_SUBST     # enable filename expansion for arguments of the form `anything=expression`
 setopt NOTIFY                # report the status of background jobs immediately
 setopt NUMERIC_GLOB_SORT     # sort filenames numerically when it makes sense
+unsetopt LIST_BEEP           # don't beep on completion
 
 # history
 setopt SHARE_HISTORY           # share history between sessions
