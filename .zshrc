@@ -87,6 +87,7 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dcu="docker compose up"
 	alias dcud="docker compose up -d"
 	alias dcd="docker compose down"
+	alias dcr="docker compose restart"
 	alias dcps="docker compose ps"
 	alias dcpsa="docker compose ps -a"
 	alias dcl="docker compose logs"
