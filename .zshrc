@@ -90,6 +90,7 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dcr="docker compose restart"
 	alias dcps="docker compose ps"
 	alias dcpsa="docker compose ps -a"
+	alias dcls="docker compose ls"
 	alias dcl="docker compose logs"
 	alias dclf="docker compose logs -f"
 	alias dcp="docker compose pull"
@@ -97,6 +98,7 @@ if [[ $(command -v docker) == /* ]]; then
 
 	alias drmall='docker ps -qa | xargs docker rm'
 	alias drmallf='docker ps -qa | xargs docker rm -f'
+	alias drmallold='docker ps -qa --filter "status=exited" --filter "status=dead" | xargs docker rm'
 	alias dimgrmall='docker image ls -q | xargs docker image rm'
 	alias dimgrmallf='docker image ls -q | xargs docker image rm -f'
 fi
