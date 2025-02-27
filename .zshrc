@@ -164,6 +164,15 @@ if [[ $(command -v minikube) == /* ]]; then
 	alias mdash="minikube dashboard"
 fi
 
+# talos
+if [[ $(command -v talosctl) == /* ]]; then
+	_complete_talosctl() {
+		unfunction $0
+		source <(talosctl completion zsh)
+	}
+	compdef _complete_talosctl talosctl
+fi
+
 # terraform
 if [[ $(command -v terraform) == /* ]]; then
 	_complete_terraform() {
