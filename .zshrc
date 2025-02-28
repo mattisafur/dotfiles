@@ -80,8 +80,22 @@ if [[ $(command -v docker) == /* ]]; then
 	alias drm="docker rm"
 	alias drmf="docker rm -f"
 	alias dimg="docker image"
+	
 	alias dvol="docker volume"
+	alias dvolls="docker volume ls"
+	alias dvolc="docker volume create"
+	alias dvoli="docker volume inspect"
+	alias dvolrm="docker volume rm"
+	alias dvolp="docker volume prune"
+	
 	alias dnet="docker network"
+	alias dnetc="docker network create"
+	alias dnetcon="docker network connect"
+	alias dnetdis="docker network disconnect"
+	alias dneti="docker network inspect"
+	alias dnetls="docker network ls"
+	alias dnetp="docker network prune"
+	alias dnetrm="docker network rm"
 
 	alias dc="docker compose"
 	alias dcu="docker compose up"
@@ -98,7 +112,6 @@ if [[ $(command -v docker) == /* ]]; then
 
 	alias drmall='docker ps -qa | xargs docker rm'
 	alias drmallf='docker ps -qa | xargs docker rm -f'
-	alias drmallold='docker ps -qa --filter "status=exited" --filter "status=dead" | xargs docker rm'
 	alias dimgrmall='docker image ls -q | xargs docker image rm'
 	alias dimgrmallf='docker image ls -q | xargs docker image rm -f'
 fi
