@@ -220,5 +220,6 @@ fi
 # tmux
 if [[ $(command -v tmux) == /* ]]; then
 	alias ta="tmux a"
+	alias tm="tmux"
 fi
 
