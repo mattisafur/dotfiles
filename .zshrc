@@ -3,7 +3,7 @@ setopt INTERACTIVE_COMMENTS  # allow comments in terminal
 setopt MAGIC_EQUAL_SUBST     # enable filename expansion for arguments of the form `anything=expression`
 setopt NOTIFY                # report the status of background jobs immediately
 setopt NUMERIC_GLOB_SORT     # sort filenames numerically when it makes sense
-unsetopt LIST_BEEP           # don't beep on completion
+unsetopt LIST_BEEP           # disable bell on completion
 
 # history
 setopt SHARE_HISTORY           # share history between sessions
@@ -79,7 +79,12 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dl="docker logs"
 	alias drm="docker rm"
 	alias drmf="docker rm -f"
+
+	alias dconprune="docker contaier prune"
+
 	alias dimg="docker image"
+	alias dimgls="docker image ls"
+	alias dimgprn="docker image prune"
 	
 	alias dvol="docker volume"
 	alias dvolls="docker volume ls"
@@ -89,13 +94,11 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dvolp="docker volume prune"
 	
 	alias dnet="docker network"
-	alias dnetc="docker network create"
-	alias dnetcon="docker network connect"
-	alias dnetdis="docker network disconnect"
-	alias dneti="docker network inspect"
 	alias dnetls="docker network ls"
-	alias dnetp="docker network prune"
+	alias dnetc="docker network create"
+	alias dneti="docker network inspect"
 	alias dnetrm="docker network rm"
+	alias dnetp="docker network prune"
 
 	alias dc="docker compose"
 	alias dcu="docker compose up"
@@ -130,15 +133,18 @@ if [[ $(command -v kubectl) == /* ]]; then
 	alias klf="kubectl logs -f"
 	alias kc="kubectl create"
 	alias ka="kubectl apply"
+	alias ke="kubectl edit"
 	alias kexe="kubectl exec"
 	alias katt="kubectl attach"
 	alias kdel="kubectl delete"
 	alias kdbg="kubectl debug"
 	alias kconf="kubectl config"
 
-	alias kdelallpvc="kubectl get persistentvolumeclaim -o name | xargs kubectl delete"
+	alias kconfns="kubectl config set-context --current --namespace"
 	alias kgsd="kubectl get secrets -o jsonpath='{.data}'"
-	alias kgsdd='() { kubectl get secrets $1 -o jsonpath="{.data.$2}" | base64 --decode && echo }'
+	alias kgsdd='() { kubectl get secrets $1 --output jsonpath="{.data.$2}" | base64 --decode && echo }'
+	alias kgeverything='kubectl get $(kubectl api-resources --verbs=list -o name | tr "\n" "," | sed "s/,$//")'
+	alias kgeverythingnamespaced='kubectl get $(kubectl api-resources --namespaced --verbs=list -o name | tr "\n" "," | sed "s/,$//")'
 fi
 
 # helm
@@ -175,6 +181,15 @@ if [[ $(command -v minikube) == /* ]]; then
 	alias mimg="minikube image"
 	alias mstat="minikube status"
 	alias mdash="minikube dashboard"
+fi
+
+# kind
+if [[ $(command -v kind) == /* ]]; then
+	__complete_kind() {
+		unfunction $0
+		source <(kind completion zsh)
+	}
+	compdef __complete_kind kind
 fi
 
 # talos
@@ -233,6 +248,7 @@ fi
 # tmux
 if [[ $(command -v tmux) == /* ]]; then
 	alias ta="tmux a"
+	alias tls="tmux ls"
 	alias tm="tmux"
 fi
 
