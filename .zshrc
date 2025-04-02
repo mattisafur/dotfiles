@@ -252,3 +252,7 @@ if [[ $(command -v tmux) == /* ]]; then
 	alias tm="tmux"
 fi
 
+if [[ $(command -v gem) == /* ]]; then
+  export GEM_HOME="$HOME/gems"
+  export PATH="$PATH:$HOME/gems/bin"
+fi
