@@ -32,7 +32,6 @@ zstyle ':completion:*' group-name ''                     # ungroup completion re
 autoload -Uz promptinit && promptinit && prompt adam1
 
 # keybinds
-bindkey -e
 bindkey "^[[1;5C" forward-word   # ctrl + ->
 bindkey "^[[1;5D" backward-word  # ctrl + <-
 
@@ -134,12 +133,15 @@ if [[ $(command -v kubectl) == /* ]]; then
 	alias kc="kubectl create"
 	alias ka="kubectl apply"
 	alias ke="kubectl edit"
+  alias kpf="kubectl port-forward"
 	alias kexe="kubectl exec"
 	alias katt="kubectl attach"
 	alias kdel="kubectl delete"
 	alias kdbg="kubectl debug"
 	alias kconf="kubectl config"
 
+  alias kconfuse="kubectl config use-context"
+  alias kconfcurr="kubectl config current-context"
 	alias kconfns="kubectl config set-context --current --namespace"
 	alias kgsd="kubectl get secrets -o jsonpath='{.data}'"
 	alias kgsdd='() { kubectl get secrets $1 --output jsonpath="{.data.$2}" | base64 --decode && echo }'
