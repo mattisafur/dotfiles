@@ -32,6 +32,7 @@ zstyle ':completion:*' group-name ''                     # ungroup completion re
 autoload -Uz promptinit && promptinit && prompt adam1
 
 # keybinds
+bindkey -e
 bindkey "^[[1;5C" forward-word   # ctrl + ->
 bindkey "^[[1;5D" backward-word  # ctrl + <-
 
