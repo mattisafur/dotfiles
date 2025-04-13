@@ -77,6 +77,7 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dps="docker ps"
 	alias dpsa="docker ps -a"
 	alias dl="docker logs"
+	alias dlf="docker logs -f"
 	alias drm="docker rm"
 	alias drmf="docker rm -f"
 
