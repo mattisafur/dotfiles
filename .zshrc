@@ -13,7 +13,7 @@ setopt HIST_VERIFY             # expand history before running comand `sudo !!` 
 
 HISTSIZE=1000                  # history size
 SAVEHIST=$HISTSIZE             # history size to be committed to history file
-HISTFILE=~/.history            # history file location
+HISTFILE=~/.zsh_history            # history file location
 
 # ls colors
 if [[ $(command -v dircolors) == "/*" ]]; then
