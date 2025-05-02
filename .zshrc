@@ -127,7 +127,7 @@ if [[ $(command -v kubectl) == /* ]]; then
 	alias kconfcurr="kubectl config current-context"
 	alias kconfns="kubectl config set-context --current --namespace"
 	alias kconfuse="kubectl config use-context"
-	alias kd="kubectl debug"
+	alias kd="kubectl describe"
 	alias kdbg="kubectl debug"
 	alias kdel="kubectl delete"
 	alias ke="kubectl edit"
