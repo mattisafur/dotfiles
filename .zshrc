@@ -69,55 +69,48 @@ fi
 
 # docker
 if [[ $(command -v docker) == /* ]]; then
-	alias dr="docker run"
-	alias dstr="docker start"
-	alias dstp="docker stop"
-	alias da="docker attach"
-	alias dexe="docker exec"
-	alias dps="docker ps"
-	alias dpsa="docker ps -a"
+	alias d="docker"
+	alias dex="docker exec"
 	alias dl="docker logs"
-	alias dlf="docker logs -f"
+	alias dlf="docker logs --follow"
+	alias dps="docker ps"
+	alias dpsa="docker ps --all"
+	alias dp="docker pull"
 	alias drm="docker rm"
-	alias drmf="docker rm -f"
+	alias drmf="docker rm --force"
+	alias dr="docker run"
 
-	alias dconprune="docker contaier prune"
+	alias dc="docker compose"
+	alias dcd="docker compsoe down"
+	alias dcl="docker compsoe logs"
+	alias dclf="docker compsoe logs --follow"
+	alias dcls="docker compose ls"
+	alias dcps="docker compose ps"
+	alias dcpsa="docker compose ps --all"
+	alias dcp="docker compose pull"
+	alias dcr="docker compose restart"
+	alias dcu="docker compose up"
+	alias dcud="docker compose up --detach"
+
+	alias dcon="docker container"
+	alias dconprn="docker container prune"
 
 	alias dimg="docker image"
 	alias dimgls="docker image ls"
 	alias dimgprn="docker image prune"
-	
+	alias dimgprna="docker image prune --all"
+	alias dimgrm="docker image rm"
+
+	alias dnet="docker netowrk"
+	alias dnetls="docker network ls"
+	alias dnetprn="docker network prune"
+	alias dnetrm="docker netowrk rm"
+
 	alias dvol="docker volume"
 	alias dvolls="docker volume ls"
-	alias dvolc="docker volume create"
-	alias dvoli="docker volume inspect"
+	alias dvolprn="docker volume prune"
+	alias dvolprna="docker volume prune --all"
 	alias dvolrm="docker volume rm"
-	alias dvolp="docker volume prune"
-	
-	alias dnet="docker network"
-	alias dnetls="docker network ls"
-	alias dnetc="docker network create"
-	alias dneti="docker network inspect"
-	alias dnetrm="docker network rm"
-	alias dnetp="docker network prune"
-
-	alias dc="docker compose"
-	alias dcu="docker compose up"
-	alias dcud="docker compose up -d"
-	alias dcd="docker compose down"
-	alias dcr="docker compose restart"
-	alias dcps="docker compose ps"
-	alias dcpsa="docker compose ps -a"
-	alias dcls="docker compose ls"
-	alias dcl="docker compose logs"
-	alias dclf="docker compose logs -f"
-	alias dcp="docker compose pull"
-	alias dcstat="docker compose stats"
-
-	alias drmall='docker ps -qa | xargs docker rm'
-	alias drmallf='docker ps -qa | xargs docker rm -f'
-	alias dimgrmall='docker image ls -q | xargs docker image rm'
-	alias dimgrmallf='docker image ls -q | xargs docker image rm -f'
 fi
 
 # k8s
@@ -128,27 +121,26 @@ if [[ $(command -v kubectl) == /* ]]; then
 	}
 	compdef _complete_kubectl kubectl
 
-	alias kg="kubectl get"
-	alias kd="kubectl describe"
-	alias kl="kubectl logs"
-	alias klf="kubectl logs -f"
-	alias kc="kubectl create"
+	alias k="kubectl"
 	alias ka="kubectl apply"
-	alias ke="kubectl edit"
-  alias kpf="kubectl port-forward"
-	alias kexe="kubectl exec"
-	alias katt="kubectl attach"
-	alias kdel="kubectl delete"
-	alias kdbg="kubectl debug"
 	alias kconf="kubectl config"
-
-  alias kconfuse="kubectl config use-context"
-  alias kconfcurr="kubectl config current-context"
+	alias kconfcurr="kubectl config current-context"
 	alias kconfns="kubectl config set-context --current --namespace"
-	alias kgsd="kubectl get secrets -o jsonpath='{.data}'"
-	alias kgsdd='() { kubectl get secrets $1 --output jsonpath="{.data.$2}" | base64 --decode && echo }'
-	alias kgeverything='kubectl get $(kubectl api-resources --verbs=list -o name | tr "\n" "," | sed "s/,$//")'
-	alias kgeverythingnamespaced='kubectl get $(kubectl api-resources --namespaced --verbs=list -o name | tr "\n" "," | sed "s/,$//")'
+	alias kconfuse="kubectl config use-context"
+	alias kd="kubectl debug"
+	alias kdbg="kubectl debug"
+	alias kdel="kubectl delete"
+	alias ke="kubectl edit"
+	alias kex="kubectl exec"
+	alias kexp="kubectl explain"
+	alias kg="kubectl get"
+	alias kgeverything='kubectl get $(kubectl api-resources --verbs=list --output name | tr "\n" "," | sed "s/,$//")'
+	alias kgeverythingnamespaced='kubectl get $(kubectl api-resources --verbs=list --output name --namespaced | tr "\n" "," | sed "s/,$//")'
+	alias kgsd="kubectl get secrets --output jsonpath='{.data}'"
+	alias kgsdd='() { kubectl get secrets $1 --output jsonpath=".data.$2" | base64 --decode && echo }'
+	alias kl="kubectl logs"
+	alias klf="kubectl logs --follow"
+	alias kpf="kubectl port-forward"
 fi
 
 # helm
@@ -159,13 +151,25 @@ if [[ $(command -v helm) == /* ]]; then
 	}
 	compdef _complete_helm helm
 
-	alias hi="helm install"
-	alias hu="helm upgrade"
-	alias hui="helm upgrade -i"
-	alias hunin="helm uninstall"
-	alias hs="helm show"
+	alias h="helm"
 	alias hg="helm get"
+	alias hi="helm install"
 	alias hls="helm list"
+	alias hp="helm pull"
+	alias hpu="helm pull --untar"
+	alias hs="helm show"
+	alias hstat="helm status"
+	alias hu="helm upgrade"
+	alias hui="helm upgrade --install"
+	alias hunin="helm uninstall"
+
+	alias hrep="helm repo"
+	alias hrepa="helm repo add"
+	alias hrepu="helm repo update"
+
+	alias hsear="healm search"
+	alias hsearh="healm search hub"
+	alias hsearr="healm search repo"
 fi
 
 # minikube
@@ -176,15 +180,14 @@ if [[ $(command -v minikube) == /* ]]; then
 	}
 	compdef _complete_minikube minikube
 
-	alias mstr="minikube start"
-	alias mstp="minikube stop"
+	alias mdash="minikube dashboard"
 	alias mdel="minikube delete"
+	alias mstat="minikube status"
+	alias mstp="minikube stop"
+	alias mstr="minikube start"
 	alias msvc="minikube service"
 	alias msvcl="minikube service list"
 	alias mtun="minikube tunnel"
-	alias mimg="minikube image"
-	alias mstat="minikube status"
-	alias mdash="minikube dashboard"
 fi
 
 # kind
