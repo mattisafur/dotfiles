@@ -73,17 +73,17 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dex="docker exec"
 	alias dl="docker logs"
 	alias dlf="docker logs --follow"
+	alias dp="docker pull"
 	alias dps="docker ps"
 	alias dpsa="docker ps --all"
-	alias dp="docker pull"
+	alias dr="docker run"
 	alias drm="docker rm"
 	alias drmf="docker rm --force"
-	alias dr="docker run"
 
 	alias dc="docker compose"
-	alias dcd="docker compsoe down"
-	alias dcl="docker compsoe logs"
-	alias dclf="docker compsoe logs --follow"
+	alias dcd="docker compose down"
+	alias dcl="docker compose logs"
+	alias dclf="docker compose logs --follow"
 	alias dcls="docker compose ls"
 	alias dcps="docker compose ps"
 	alias dcpsa="docker compose ps --all"
@@ -101,10 +101,10 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dimgprna="docker image prune --all"
 	alias dimgrm="docker image rm"
 
-	alias dnet="docker netowrk"
+	alias dnet="docker network"
 	alias dnetls="docker network ls"
 	alias dnetprn="docker network prune"
-	alias dnetrm="docker netowrk rm"
+	alias dnetrm="docker network rm"
 
 	alias dvol="docker volume"
 	alias dvolls="docker volume ls"
@@ -123,6 +123,7 @@ if [[ $(command -v kubectl) == /* ]]; then
 
 	alias k="kubectl"
 	alias ka="kubectl apply"
+	alias kc="kubectl create"
 	alias kconf="kubectl config"
 	alias kconfcurr="kubectl config current-context"
 	alias kconfns="kubectl config set-context --current --namespace"
@@ -167,9 +168,9 @@ if [[ $(command -v helm) == /* ]]; then
 	alias hrepa="helm repo add"
 	alias hrepu="helm repo update"
 
-	alias hsear="healm search"
-	alias hsearh="healm search hub"
-	alias hsearr="healm search repo"
+	alias hsear="helm search"
+	alias hsearh="helm search hub"
+	alias hsearr="helm search repo"
 fi
 
 # minikube
