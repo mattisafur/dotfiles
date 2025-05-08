@@ -253,13 +253,6 @@ if [[ $(command -v rustup) == /* ]]; then
 	compdef _complete_rustup rustup
 fi
 
-# tmux
-if [[ $(command -v tmux) == /* ]]; then
-	alias ta="tmux a"
-	alias tls="tmux ls"
-	alias tm="tmux"
-fi
-
 if [[ $(command -v gem) == /* ]]; then
   export GEM_HOME="$HOME/gems"
   export PATH="$PATH:$HOME/gems/bin"
