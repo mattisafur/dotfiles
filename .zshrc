@@ -38,8 +38,8 @@ bindkey "^[[1;5D" backward-word  # ctrl + <-
 
 # general aliases
 alias lsa="ls -a"
-alias ll="ls -l"
-alias lla="ls -la"
+alias l="ls -l"
+alias ll="ls -la"
 alias mkcd='() { mkdir -p $1 && cd $1 }'
 alias cdtemp='cd $(mktemp -d)'
 
@@ -89,6 +89,8 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dcpsa="docker compose ps --all"
 	alias dcp="docker compose pull"
 	alias dcr="docker compose restart"
+	alias dcstp="docker compose stop"
+	alias dcstr="docker compose start"
 	alias dcu="docker compose up"
 	alias dcud="docker compose up --detach"
 
@@ -253,7 +255,13 @@ if [[ $(command -v rustup) == /* ]]; then
 	compdef _complete_rustup rustup
 fi
 
+# ruby
 if [[ $(command -v gem) == /* ]]; then
   export GEM_HOME="$HOME/gems"
   export PATH="$PATH:$HOME/gems/bin"
+fi
+
+# neovim
+if [[ $(command -v nvim) == /* ]]; then
+	export EDITOR="nvim"
 fi
