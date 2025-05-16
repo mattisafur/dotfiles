@@ -265,3 +265,9 @@ fi
 if [[ $(command -v nvim) == /* ]]; then
 	export EDITOR="nvim"
 fi
+
+# tmux
+if [[ $(command -v tmux) == /* ]]; then
+	alias tm="[[ ! -v tmux ]] && ( tmux ls &>/dev/null && tmux attach || tmux )"
+fi
+
