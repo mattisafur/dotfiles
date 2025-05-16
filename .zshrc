@@ -268,6 +268,6 @@ fi
 
 # tmux
 if [[ $(command -v tmux) == /* ]]; then
-	alias tm="[[ ! -v tmux ]] && ( tmux ls &>/dev/null && tmux attach || tmux )"
+	alias tm="[[ ! -v TMUX ]] && ( tmux ls &>/dev/null && tmux attach || tmux )"
 fi
 
