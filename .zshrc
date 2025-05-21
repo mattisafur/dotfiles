@@ -34,8 +34,10 @@ autoload -Uz promptinit && promptinit && prompt adam1
 
 # keybinds
 bindkey -e
-bindkey "^[[1;5C" forward-word   # ctrl + ->
-bindkey "^[[1;5D" backward-word  # ctrl + <-
+bindkey "^[[1;5C" forward-word    # ctrl + ->
+bindkey "^[[1;5D" backward-word   # ctrl + <-
+bindkey "^[[1~" beginning-of-line # Home
+bindkey "^[[4~" end-of-line       # End
 
 # general aliases
 alias lsa="ls -a"
@@ -80,6 +82,7 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dr="docker run"
 	alias drm="docker rm"
 	alias drmf="docker rm --force"
+	alias dstr="docker start"
 
 	alias dc="docker compose"
 	alias dcd="docker compose down"
