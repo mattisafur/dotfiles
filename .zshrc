@@ -275,3 +275,11 @@ if [[ $(command -v tmux) == /* ]]; then
 	alias tm="[[ ! -v TMUX ]] && ( tmux ls &>/dev/null && tmux attach || tmux )"
 fi
 
+# npm
+if [[ $(command -v npm) == /* ]]; then
+	if [[ ! -d "$HOME/.npm-global" ]]; then
+		mkdir "$HOME/.npm-global"
+	fi
+	export PATH="$PATH:$HOME/.npm-global/bin"
+fi
+
