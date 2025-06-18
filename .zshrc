@@ -283,3 +283,9 @@ if [[ $(command -v npm) == /* ]]; then
 	export PATH="$PATH:$HOME/.npm-global/bin"
 fi
 
+
+# brew
+if [[ -d "/home/linuxbrew/.linuxbrew" ]]; then
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
