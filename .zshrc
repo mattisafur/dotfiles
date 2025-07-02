@@ -46,6 +46,7 @@ alias ll="ls -la"
 alias mkcd='() { mkdir -p $1 && cd $1 }'
 alias cdtemp='cd $(mktemp -d)'
 alias fda="fd --hidden"
+alias diffy="diff --side-by-side"
 
 # color aliases
 alias ls="ls --color=auto"
