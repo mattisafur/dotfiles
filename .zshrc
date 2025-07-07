@@ -142,6 +142,7 @@ if [[ $(command -v kubectl) == /* ]]; then
 	alias ke="kubectl edit"
 	alias kex="kubectl exec"
 	alias kexp="kubectl explain"
+	alias kexpr="kubectl explain --recursive"
 	alias kg="kubectl get"
 	alias kgeverything='kubectl get $(kubectl api-resources --verbs=list --output name | tr "\n" "," | sed "s/,$//")'
 	alias kgeverythingnamespaced='kubectl get $(kubectl api-resources --verbs=list --output name --namespaced | tr "\n" "," | sed "s/,$//")'
