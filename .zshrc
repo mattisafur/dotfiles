@@ -62,16 +62,6 @@ alias ip="ip --color=auto"
 # ## Tool specific configuration ##
 # #################################
 
-# git
-if [[ $(command -v git) == /* ]]; then
-	alias ga="git add"
-	alias gc="git commit"
-	alias gstat="git status"
-	alias gl="git log"
-	alias glg="git log --graph"
-	alias glga="git log --graph --all"
-fi
-
 # docker
 if [[ $(command -v docker) == /* ]]; then
 	alias d="docker"
@@ -169,6 +159,8 @@ if [[ $(command -v helm) == /* ]]; then
 	alias hpu="helm pull --untar"
 	alias hs="helm show"
 	alias hstat="helm status"
+	alias ht="helm template"
+	alias htd="helm template --debug"
 	alias hu="helm upgrade"
 	alias hui="helm upgrade --install"
 	alias hunin="helm uninstall"
