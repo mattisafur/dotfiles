@@ -4,6 +4,7 @@ setopt MAGIC_EQUAL_SUBST     # enable filename expansion for arguments of the fo
 setopt NOTIFY                # report the status of background jobs immediately
 setopt NUMERIC_GLOB_SORT     # sort filenames numerically when it makes sense
 setopt GLOB_DOTS             # inlude hidden filed in glob
+setopt AUTO_PUSHD            # automatically pushd on cd commands
 unsetopt LIST_BEEP           # disable bell on completion
 
 # history
