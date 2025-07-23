@@ -63,6 +63,11 @@ alias ip="ip --color=auto"
 # ## Tool specific configuration ##
 # #################################
 
+# brew
+if [[ -d "/home/linuxbrew/.linuxbrew" ]]; then
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # docker
 if [[ $(command -v docker) == /* ]]; then
 	alias d="docker"
@@ -277,11 +282,5 @@ if [[ $(command -v npm) == /* ]]; then
 		mkdir "$HOME/.npm-global"
 	fi
 	export PATH="$PATH:$HOME/.npm-global/bin"
-fi
-
-
-# brew
-if [[ -d "/home/linuxbrew/.linuxbrew" ]]; then
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
