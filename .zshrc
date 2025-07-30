@@ -8,14 +8,14 @@ setopt AUTO_PUSHD            # automatically pushd on cd commands
 unsetopt LIST_BEEP           # disable bell on completion
 
 # history
-setopt SHARE_HISTORY           # share history between sessions
-setopt HIST_IGNORE_SPACE       # don't add command prefixed with space to history
-setopt HIST_IGNORE_ALL_DUPS    # ignore all duplicates in history
-setopt HIST_VERIFY             # expand history before running comand `sudo !!` will be expended to `sudo <last command>` before executing it
+setopt SHARE_HISTORY         # share history between sessions
+setopt HIST_IGNORE_SPACE     # don't add command prefixed with space to history
+setopt HIST_IGNORE_ALL_DUPS  # ignore all duplicates in history
+setopt HIST_VERIFY           # expand history before running comand `sudo !!` will be expended to `sudo <last command>` before executing it
 
-HISTSIZE=1000                  # history size
-SAVEHIST=$HISTSIZE             # history size to be committed to history file
-HISTFILE=~/.zsh_history            # history file location
+HISTSIZE=1000                # history size
+SAVEHIST=$HISTSIZE           # history size to be committed to history file
+HISTFILE=$HOME/.zsh_history  # history file location
 
 # ls colors
 if [[ $(command -v dircolors) == "/*" ]]; then
@@ -71,6 +71,7 @@ fi
 # docker
 if [[ $(command -v docker) == /* ]]; then
 	alias d="docker"
+    alias db="docker build"
 	alias dex="docker exec"
 	alias dl="docker logs"
 	alias dlf="docker logs --follow"
@@ -281,6 +282,6 @@ if [[ $(command -v npm) == /* ]]; then
 	if [[ ! -d "$HOME/.npm-global" ]]; then
 		mkdir "$HOME/.npm-global"
 	fi
-	export PATH="$PATH:$HOME/.npm-global/bin"
+	export PATH=$PATH:"$HOME/.npm-global/bin"
 fi
 
