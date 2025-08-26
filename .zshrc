@@ -285,3 +285,29 @@ if [[ $(command -v npm) == /* ]]; then
 	export PATH=$PATH:"$HOME/.npm-global/bin"
 fi
 
+# deno
+if [[ -d "$HOME/.deno" ]]; then
+    if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then
+        export FPATH="$FPATH:$HOME/.zsh/completions"
+    fi
+    source $HOME/.deno/env
+
+    _complete_deno() {
+        unfunction $0
+        source <(deno completions zsh)
+    }
+    compdef _complete_deno deno
+fi
+
+# bun
+if [[ -d "$HOME/.bun" ]]; then
+    export BUN_INSTALL="$HOME/.bun"
+    export PATH=$PATH:"$BUN_INSTALL/bin"
+
+    _complete_bun() {
+        unfunction $0
+        source "$HOME/.bun/_bun"
+    }
+    compdef _complete_bun bun
+fi
+
