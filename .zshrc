@@ -123,6 +123,7 @@ if [[ $(command -v kubectl) == /* ]]; then
 	_complete_kubectl() {
 		unfunction $0
 		source <(kubectl completion zsh)
+        _kubectl $@
 	}
 	compdef _complete_kubectl kubectl
 
@@ -155,6 +156,7 @@ if [[ $(command -v helm) == /* ]]; then
 	_complete_helm() {
 		unfunction $0
 		source <(helm completion zsh)
+        _helm $@
 	}
 	compdef _complete_helm helm
 
