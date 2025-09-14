@@ -123,7 +123,7 @@ if [[ $(command -v kubectl) == /* ]]; then
 	_complete_kubectl() {
 		unfunction $0
 		source <(kubectl completion zsh)
-        _kubectl $@
+        _complete $@
 	}
 	compdef _complete_kubectl kubectl
 
@@ -156,7 +156,7 @@ if [[ $(command -v helm) == /* ]]; then
 	_complete_helm() {
 		unfunction $0
 		source <(helm completion zsh)
-        _helm $@
+        _complete $@
 	}
 	compdef _complete_helm helm
 
@@ -188,6 +188,7 @@ if [[ $(command -v minikube) == /* ]]; then
 	_complete_minikube() {
 		unfunction $0
 		source <(minikube completion zsh)
+        _complete $@
 	}
 	compdef _complete_minikube minikube
 
@@ -206,6 +207,7 @@ if [[ $(command -v kind) == /* ]]; then
 	__complete_kind() {
 		unfunction $0
 		source <(kind completion zsh)
+        _complete $@
 	}
 	compdef __complete_kind kind
 fi
@@ -215,6 +217,7 @@ if [[ $(command -v talosctl) == /* ]]; then
 	_complete_talosctl() {
 		unfunction $0
 		source <(talosctl completion zsh)
+        _complete $@
 	}
 	compdef _complete_talosctl talosctl
 fi
@@ -224,6 +227,7 @@ if [[ $(command -v terraform) == /* ]]; then
 	_complete_terraform() {
 		unfunction $0
 		complete -o nospace -C /usr/bin/terraform terraform
+        _complete $@
 	}
 	compdef _complete_terraform terraform
 fi
@@ -233,6 +237,7 @@ if [[ $(command -v tofu) == /* ]]; then
 	_complete_tofu() {
 		unfunction $0
 		complete -o nospace -C /usr/bin/tofu tofu
+        _complete $@
 	}
 	compdef _complete_tofu tofu
 fi
@@ -242,6 +247,7 @@ if [[ $(command -v aws) == /* && $(command -v aws_completer) == /* ]]; then
 	_complete_aws() {
 		unfunction $0
 		complete -C $(command -v aws_completer) aws
+        _complete $@
 	}
 	compdef _complete_aws aws
 fi
@@ -259,6 +265,7 @@ if [[ $(command -v rustup) == /* ]]; then
 	_complete_rustup() {
 		unfunction $0
 		source <(rustup completions zsh)
+        _complete $@
 	}
 	compdef _complete_rustup rustup
 fi
@@ -297,6 +304,7 @@ if [[ -d "$HOME/.deno" ]]; then
     _complete_deno() {
         unfunction $0
         source <(deno completions zsh)
+        _complete $@
     }
     compdef _complete_deno deno
 fi
@@ -309,6 +317,7 @@ if [[ -d "$HOME/.bun" ]]; then
     _complete_bun() {
         unfunction $0
         source "$HOME/.bun/_bun"
+        _complete $@
     }
     compdef _complete_bun bun
 fi
