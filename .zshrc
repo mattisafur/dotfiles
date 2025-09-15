@@ -204,12 +204,12 @@ fi
 
 # kind
 if [[ $(command -v kind) == /* ]]; then
-	__complete_kind() {
+	_complete_kind() {
 		unfunction $0
 		source <(kind completion zsh)
         _complete $@
 	}
-	compdef __complete_kind kind
+	compdef _complete_kind kind
 fi
 
 # talos
