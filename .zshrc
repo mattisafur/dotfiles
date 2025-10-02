@@ -176,6 +176,7 @@ if [[ $(command -v helm) == /* ]]; then
 
 	alias hrep="helm repo"
 	alias hrepa="helm repo add"
+    alias hrepls="helm repo list"
 	alias hrepu="helm repo update"
 
 	alias hsear="helm search"
