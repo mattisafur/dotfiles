@@ -95,7 +95,9 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dcstp="docker compose stop"
 	alias dcstr="docker compose start"
 	alias dcu="docker compose up"
+    alias dcub="docker compose up --build"
 	alias dcud="docker compose up --detach"
+    alias dcudb="docker compose up --detach --build"
 
 	alias dcon="docker container"
 	alias dconprn="docker container prune"
