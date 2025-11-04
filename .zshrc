@@ -18,8 +18,8 @@ SAVEHIST=$HISTSIZE           # history size to be committed to history file
 HISTFILE=$HOME/.zsh_history  # history file location
 
 # ls colors
-if [[ $(command -v dircolors) == "/*" ]]; then
-	source "$(dircolors)"
+if [[ $(command -v dircolors) == /* ]]; then
+	source <(dircolors)
 fi
 
 # completion
