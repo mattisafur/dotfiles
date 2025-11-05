@@ -271,6 +271,14 @@ if [[ $(command -v rustup) == /* ]]; then
         _complete $@
 	}
 	compdef _complete_rustup rustup
+
+    _complete_cargo() {
+        unfunction $0
+        source <(rustup completions zsh cargo)
+        compdef _cargo cargo
+        _complete $@
+    }
+    compdef _complete_cargo cargo
 fi
 
 # ruby
