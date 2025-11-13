@@ -1,3 +1,6 @@
+# break if shell is not interactive
+[[ ! -o interactive ]] && return
+
 # general options
 setopt INTERACTIVE_COMMENTS  # allow comments in terminal
 setopt MAGIC_EQUAL_SUBST     # enable filename expansion for arguments of the form `anything=expression`
