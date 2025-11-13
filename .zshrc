@@ -248,6 +248,16 @@ if [[ $(command -v tofu) == /* ]]; then
 	compdef _complete_tofu tofu
 fi
 
+# github
+if [[ $(command -v gh) == /* ]]; then
+    _complete_gh() {
+        unfunction $0
+        source <(gh completion -s zsh)
+        _complete $@
+    }
+    compdef _complete_gh gh
+fi
+
 # aws cli
 if [[ $(command -v aws) == /* && $(command -v aws_completer) == /* ]]; then
 	_complete_aws() {
