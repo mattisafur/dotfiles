@@ -84,6 +84,7 @@ if [[ $(command -v docker) == /* ]]; then
 	alias dr="docker run"
 	alias drm="docker rm"
 	alias drmf="docker rm --force"
+    alias dstp="docker stop"
 	alias dstr="docker start"
 
 	alias dc="docker compose"
