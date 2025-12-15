@@ -12,7 +12,7 @@ unsetopt LIST_BEEP           # disable bell on completion
 
 # history
 setopt SHARE_HISTORY         # share history between sessions
-setopt HIST_IGNORE_SPACE     # don't add command prefixed with space to history
+setopt HIST_IGNORE_SPACE     # don't add commands prefixed with space to history
 setopt HIST_IGNORE_ALL_DUPS  # ignore all duplicates in history
 setopt HIST_VERIFY           # expand history before running comand `sudo !!` will be expended to `sudo <last command>` before executing it
 
@@ -22,7 +22,7 @@ HISTFILE=$HOME/.zsh_history  # history file location
 
 # ls colors
 if [[ $(command -v dircolors) == /* ]]; then
-	source <(dircolors)
+    source <(dircolors)
 fi
 
 # completion
@@ -31,7 +31,6 @@ autoload bashcompinit && bashcompinit
 zstyle ':completion:*:*:*:*:*' menu select               # allow completion selection using arrow keys
 zstyle ':completion:*' format 'Completing %d'            # add completion infomation to suggestions
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"  # colorize completion
-zstyle ':completion:*' group-name ''                     # ungroup completion results
 
 # prompt
 autoload -Uz promptinit && promptinit && prompt adam1
@@ -66,284 +65,140 @@ alias ip="ip --color=auto"
 # ## Tool specific configuration ##
 # #################################
 
-# brew
-if [[ -d "/home/linuxbrew/.linuxbrew" ]]; then
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
 # docker
 if [[ $(command -v docker) == /* ]]; then
-	alias d="docker"
+    alias d="docker"
     alias db="docker build"
-	alias dex="docker exec"
-	alias dl="docker logs"
-	alias dlf="docker logs --follow"
-	alias dp="docker pull"
-	alias dps="docker ps"
-	alias dpsa="docker ps --all"
-	alias dr="docker run"
-	alias drm="docker rm"
-	alias drmf="docker rm --force"
+    alias dex="docker exec"
+    alias dl="docker logs"
+    alias dlf="docker logs --follow"
+    alias dp="docker pull"
+    alias dps="docker ps"
+    alias dpsa="docker ps --all"
+    alias dr="docker run"
+    alias drm="docker rm"
+    alias drmf="docker rm --force"
     alias dstp="docker stop"
-	alias dstr="docker start"
+    alias dstr="docker start"
 
-	alias dc="docker compose"
-	alias dcd="docker compose down"
-	alias dcl="docker compose logs"
-	alias dclf="docker compose logs --follow"
-	alias dcls="docker compose ls"
-	alias dcps="docker compose ps"
-	alias dcpsa="docker compose ps --all"
-	alias dcp="docker compose pull"
-	alias dcr="docker compose restart"
-	alias dcstp="docker compose stop"
-	alias dcstr="docker compose start"
-	alias dcu="docker compose up"
+    alias dc="docker compose"
+    alias dcd="docker compose down"
+    alias dcl="docker compose logs"
+    alias dclf="docker compose logs --follow"
+    alias dcls="docker compose ls"
+    alias dcps="docker compose ps"
+    alias dcpsa="docker compose ps --all"
+    alias dcp="docker compose pull"
+    alias dcr="docker compose restart"
+    alias dcstp="docker compose stop"
+    alias dcstr="docker compose start"
+    alias dcu="docker compose up"
     alias dcub="docker compose up --build"
-	alias dcud="docker compose up --detach"
+    alias dcud="docker compose up --detach"
     alias dcudb="docker compose up --detach --build"
 
-	alias dcon="docker container"
-	alias dconprn="docker container prune"
+    alias dcon="docker container"
+    alias dconprn="docker container prune"
 
-	alias dimg="docker image"
-	alias dimgls="docker image ls"
-	alias dimgprn="docker image prune"
-	alias dimgprna="docker image prune --all"
-	alias dimgrm="docker image rm"
+    alias dimg="docker image"
+    alias dimgls="docker image ls"
+    alias dimgprn="docker image prune"
+    alias dimgprna="docker image prune --all"
+    alias dimgrm="docker image rm"
 
-	alias dnet="docker network"
-	alias dnetls="docker network ls"
-	alias dnetprn="docker network prune"
-	alias dnetrm="docker network rm"
+    alias dnet="docker network"
+    alias dnetls="docker network ls"
+    alias dnetprn="docker network prune"
+    alias dnetrm="docker network rm"
 
-	alias dvol="docker volume"
-	alias dvolls="docker volume ls"
-	alias dvolprn="docker volume prune"
-	alias dvolprna="docker volume prune --all"
-	alias dvolrm="docker volume rm"
+    alias dvol="docker volume"
+    alias dvolls="docker volume ls"
+    alias dvolprn="docker volume prune"
+    alias dvolprna="docker volume prune --all"
+    alias dvolrm="docker volume rm"
 fi
 
 # k8s
 if [[ $(command -v kubectl) == /* ]]; then
-	_complete_kubectl() {
-		unfunction $0
-		source <(kubectl completion zsh)
-        _complete $@
-	}
-	compdef _complete_kubectl kubectl
-
-	alias k="kubectl"
-	alias ka="kubectl apply"
-	alias kc="kubectl create"
-	alias kconf="kubectl config"
-	alias kconfcurr="kubectl config current-context"
-	alias kconfns="kubectl config set-context --current --namespace"
-	alias kconfuse="kubectl config use-context"
-	alias kd="kubectl describe"
-	alias kdbg="kubectl debug"
-	alias kdel="kubectl delete"
-	alias ke="kubectl edit"
-	alias kex="kubectl exec"
-	alias kexp="kubectl explain"
-	alias kexpr="kubectl explain --recursive"
-	alias kg="kubectl get"
-	alias kgeverything='kubectl get $(kubectl api-resources --verbs=list --output name | tr "\n" "," | sed "s/,$//")'
-	alias kgeverythingnamespaced='kubectl get $(kubectl api-resources --verbs=list --output name --namespaced | tr "\n" "," | sed "s/,$//")'
-	alias kgsd="kubectl get secrets --output jsonpath='{.data}'"
-	alias kgsdd='() { kubectl get secrets $1 --output jsonpath=".data.$2" | base64 --decode && echo }'
-	alias kl="kubectl logs"
-	alias klf="kubectl logs --follow"
-	alias kpf="kubectl port-forward"
+    alias k="kubectl"
+    alias ka="kubectl apply"
+    alias kc="kubectl create"
+    alias kconf="kubectl config"
+    alias kconfcurr="kubectl config current-context"
+    alias kconfns="kubectl config set-context --current --namespace"
+    alias kconfuse="kubectl config use-context"
+    alias kd="kubectl describe"
+    alias kdbg="kubectl debug"
+    alias kdel="kubectl delete"
+    alias ke="kubectl edit"
+    alias kex="kubectl exec"
+    alias kexp="kubectl explain"
+    alias kexpr="kubectl explain --recursive"
+    alias kg="kubectl get"
+    alias kgeverything='kubectl get $(kubectl api-resources --verbs=list --output name | tr "\n" "," | sed "s/,$//")'
+    alias kgeverythingnamespaced='kubectl get $(kubectl api-resources --verbs=list --output name --namespaced | tr "\n" "," | sed "s/,$//")'
+    alias kgsd="kubectl get secrets --output jsonpath='{.data}'"
+    alias kgsdd='() { kubectl get secrets $1 --output jsonpath=".data.$2" | base64 --decode && echo }'
+    alias kl="kubectl logs"
+    alias klf="kubectl logs --follow"
+    alias kpf="kubectl port-forward"
 fi
 
 # helm
 if [[ $(command -v helm) == /* ]]; then
-	_complete_helm() {
-		unfunction $0
-		source <(helm completion zsh)
-        _complete $@
-	}
-	compdef _complete_helm helm
+    alias h="helm"
+    alias hg="helm get"
+    alias hi="helm install"
+    alias hls="helm list"
+    alias hp="helm pull"
+    alias hpu="helm pull --untar"
+    alias hs="helm show"
+    alias hstat="helm status"
+    alias ht="helm template"
+    alias htd="helm template --debug"
+    alias hu="helm upgrade"
+    alias hui="helm upgrade --install"
+    alias hunin="helm uninstall"
 
-	alias h="helm"
-	alias hg="helm get"
-	alias hi="helm install"
-	alias hls="helm list"
-	alias hp="helm pull"
-	alias hpu="helm pull --untar"
-	alias hs="helm show"
-	alias hstat="helm status"
-	alias ht="helm template"
-	alias htd="helm template --debug"
-	alias hu="helm upgrade"
-	alias hui="helm upgrade --install"
-	alias hunin="helm uninstall"
-
-	alias hrep="helm repo"
-	alias hrepa="helm repo add"
+    alias hrep="helm repo"
+    alias hrepa="helm repo add"
     alias hrepls="helm repo list"
-	alias hrepu="helm repo update"
+    alias hrepu="helm repo update"
 
-	alias hsear="helm search"
-	alias hsearh="helm search hub"
-	alias hsearr="helm search repo"
+    alias hsear="helm search"
+    alias hsearh="helm search hub"
+    alias hsearr="helm search repo"
 fi
 
 # minikube
 if [[ $(command -v minikube) == /* ]]; then
-	_complete_minikube() {
-		unfunction $0
-		source <(minikube completion zsh)
-        _complete $@
-	}
-	compdef _complete_minikube minikube
-
-	alias mdash="minikube dashboard"
-	alias mdel="minikube delete"
-	alias mstat="minikube status"
-	alias mstp="minikube stop"
-	alias mstr="minikube start"
-	alias msvc="minikube service"
-	alias msvcl="minikube service list"
-	alias mtun="minikube tunnel"
-fi
-
-# kind
-if [[ $(command -v kind) == /* ]]; then
-	_complete_kind() {
-		unfunction $0
-		source <(kind completion zsh)
-        _complete $@
-	}
-	compdef _complete_kind kind
-fi
-
-# talos
-if [[ $(command -v talosctl) == /* ]]; then
-	_complete_talosctl() {
-		unfunction $0
-		source <(talosctl completion zsh)
-        _complete $@
-	}
-	compdef _complete_talosctl talosctl
-fi
-
-# terraform
-if [[ $(command -v terraform) == /* ]]; then
-	_complete_terraform() {
-		unfunction $0
-		complete -o nospace -C /usr/bin/terraform terraform
-        _complete $@
-	}
-	compdef _complete_terraform terraform
-fi
-
-# opentofu
-if [[ $(command -v tofu) == /* ]]; then
-	_complete_tofu() {
-		unfunction $0
-		complete -o nospace -C /usr/bin/tofu tofu
-        _complete $@
-	}
-	compdef _complete_tofu tofu
-fi
-
-# github
-if [[ $(command -v gh) == /* ]]; then
-    _complete_gh() {
-        unfunction $0
-        source <(gh completion -s zsh)
-        _complete $@
-    }
-    compdef _complete_gh gh
+    alias mdash="minikube dashboard"
+    alias mdel="minikube delete"
+    alias mstat="minikube status"
+    alias mstp="minikube stop"
+    alias mstr="minikube start"
+    alias msvc="minikube service"
+    alias msvcl="minikube service list"
+    alias mtun="minikube tunnel"
 fi
 
 # aws cli
 if [[ $(command -v aws) == /* && $(command -v aws_completer) == /* ]]; then
-	_complete_aws() {
-		unfunction $0
-		complete -C $(command -v aws_completer) aws
-        _complete $@
-	}
-	compdef _complete_aws aws
-fi
-
-# golang
-if [[ -d "/usr/local/go" ]]; then
-	export PATH=$PATH:"/usr/local/go/bin"
-
-	export GOPATH="$HOME/go"
-	export PATH=$PATH:"$GOPATH/bin"
-fi
-
-# rust
-if [[ $(command -v rustup) == /* ]]; then
-	_complete_rustup() {
-		unfunction $0
-		source <(rustup completions zsh)
-        _complete $@
-	}
-	compdef _complete_rustup rustup
-
-    _complete_cargo() {
+    _complete_aws() {
         unfunction $0
-        source <(rustup completions zsh cargo)
-        compdef _cargo cargo
+        complete -C $(command -v aws_completer) aws
         _complete $@
     }
-    compdef _complete_cargo cargo
-fi
-
-# ruby
-if [[ $(command -v gem) == /* ]]; then
-  export GEM_HOME="$HOME/gems"
-  export PATH="$PATH:$HOME/gems/bin"
+    compdef _complete_aws aws
 fi
 
 # neovim
 if [[ $(command -v nvim) == /* ]]; then
-	export EDITOR="nvim"
+    export EDITOR="nvim"
 fi
 
 # tmux
 if [[ $(command -v tmux) == /* ]]; then
-	alias tm="[[ ! -v TMUX ]] && ( tmux ls &>/dev/null && tmux attach || tmux )"
-fi
-
-# npm
-if [[ $(command -v npm) == /* ]]; then
-	if [[ ! -d "$HOME/.npm-global" ]]; then
-		mkdir "$HOME/.npm-global"
-	fi
-	export PATH=$PATH:"$HOME/.npm-global/bin"
-fi
-
-# deno
-if [[ -d "$HOME/.deno" ]]; then
-    if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then
-        export FPATH="$FPATH:$HOME/.zsh/completions"
-    fi
-    source $HOME/.deno/env
-
-    _complete_deno() {
-        unfunction $0
-        source <(deno completions zsh)
-        _complete $@
-    }
-    compdef _complete_deno deno
-fi
-
-# bun
-if [[ -d "$HOME/.bun" ]]; then
-    export BUN_INSTALL="$HOME/.bun"
-    export PATH=$PATH:"$BUN_INSTALL/bin"
-
-    _complete_bun() {
-        unfunction $0
-        source "$HOME/.bun/_bun"
-        _complete $@
-    }
-    compdef _complete_bun bun
+    alias tm="[[ ! -v TMUX ]] && ( tmux ls &>/dev/null && tmux attach || tmux )"
 fi
 
