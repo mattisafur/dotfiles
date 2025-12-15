@@ -65,6 +65,14 @@ alias ip="ip --color=auto"
 # ## Tool specific configuration ##
 # #################################
 
+# git
+if [[ $(command -v git) == /* ]]; then
+    alias g="git"
+    alias ga="git add"
+    alias gb="git branch"
+    alias gc="git commit"
+fi
+
 # docker
 if [[ $(command -v docker) == /* ]]; then
     alias d="docker"
