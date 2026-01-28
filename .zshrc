@@ -71,6 +71,29 @@ if [[ $(command -v git) == /* ]]; then
     alias ga="git add"
     alias gb="git branch"
     alias gc="git commit"
+    alias gca="git commit --amend"
+    alias gco="git checkout"
+    alias gconf="git config"
+    alias gconfg="git config --global"
+    alias gconfls="git config --list"
+    alias gd="git diff"
+    alias gf="git fetch"
+    alias gfa="git fetch --all"
+    alias gi="git init"
+    alias gl="git log"
+    alias glg="git log --graph"
+    alias glga="git log --graph --all"
+    alias glgao="git log --graph -all --oneline"
+    alias gm="git merge"
+    alias gp="git pull"
+    alias gpa="git pull --all"
+    alias gpu="git push"
+    alias gput="git push --tags"
+    alias gst="git stash"
+    alias gstp="git stash pop"
+    alias gstu="git stash push --include-untracked"
+    alias gt="git tag"
+    alias gwt="git worktree"
 fi
 
 # docker
@@ -180,6 +203,7 @@ fi
 
 # minikube
 if [[ $(command -v minikube) == /* ]]; then
+    alias m="minikube"
     alias mdash="minikube dashboard"
     alias mdel="minikube delete"
     alias mstat="minikube status"
@@ -190,6 +214,11 @@ if [[ $(command -v minikube) == /* ]]; then
     alias mtun="minikube tunnel"
 fi
 
+# talos
+if [[ $(command -v talosctl) == /* ]]; then
+    alias tctl="talosctl"
+fi
+
 # aws cli
 if [[ $(command -v aws) == /* && $(command -v aws_completer) == /* ]]; then
     _complete_aws() {
@@ -198,6 +227,11 @@ if [[ $(command -v aws) == /* && $(command -v aws_completer) == /* ]]; then
         _complete $@
     }
     compdef _complete_aws aws
+fi
+
+# rust
+if [[ $(command -v cargo) == /* ]]; then
+    export PATH=$HOME/.cargo/bin:$PATH
 fi
 
 # neovim
