@@ -244,3 +244,8 @@ if [[ $(command -v tmux) == /* ]]; then
     alias tm="[[ ! -v TMUX ]] && ( tmux ls &>/dev/null && tmux attach || tmux )"
 fi
 
+# ruby
+if [[ $(command -v ruby) == /* ]]; then
+    export PATH=$PATH:$(gem env user_gemhome)/bin
+fi
+
