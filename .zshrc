@@ -21,7 +21,7 @@ SAVEHIST=$HISTSIZE           # history size to be committed to history file
 HISTFILE=$HOME/.zsh_history  # history file location
 
 # ls colors
-if [[ $(command -v dircolors) == /* ]]; then
+if (( $+commands[dircolors] )); then
     source <(dircolors)
 fi
 
@@ -66,7 +66,7 @@ alias ip="ip --color=auto"
 # #################################
 
 # git
-if [[ $(command -v git) == /* ]]; then
+if (( $+commands[git] )); then
     alias g="git"
     alias ga="git add"
     alias gb="git branch"
@@ -97,7 +97,7 @@ if [[ $(command -v git) == /* ]]; then
 fi
 
 # docker
-if [[ $(command -v docker) == /* ]]; then
+if (( $+commands[docker] )); then
     alias d="docker"
     alias db="docker build"
     alias dex="docker exec"
@@ -150,7 +150,7 @@ if [[ $(command -v docker) == /* ]]; then
 fi
 
 # k8s
-if [[ $(command -v kubectl) == /* ]]; then
+if (( $+commands[kubectl] )); then
     alias k="kubectl"
     alias ka="kubectl apply"
     alias kc="kubectl create"
@@ -176,7 +176,7 @@ if [[ $(command -v kubectl) == /* ]]; then
 fi
 
 # helm
-if [[ $(command -v helm) == /* ]]; then
+if (( $+commands[helm] )); then
     alias h="helm"
     alias hg="helm get"
     alias hi="helm install"
@@ -202,7 +202,7 @@ if [[ $(command -v helm) == /* ]]; then
 fi
 
 # minikube
-if [[ $(command -v minikube) == /* ]]; then
+if (( $+commands[minikube] )); then
     alias m="minikube"
     alias mdash="minikube dashboard"
     alias mdel="minikube delete"
@@ -215,12 +215,12 @@ if [[ $(command -v minikube) == /* ]]; then
 fi
 
 # talos
-if [[ $(command -v talosctl) == /* ]]; then
+if (( $+commands[talosctl] )); then
     alias tctl="talosctl"
 fi
 
 # aws cli
-if [[ $(command -v aws) == /* && $(command -v aws_completer) == /* ]]; then
+if (( $+commands[aws] && $+commands[aws_completer] )); then
     _complete_aws() {
         unfunction $0
         complete -C $(command -v aws_completer) aws
@@ -230,22 +230,22 @@ if [[ $(command -v aws) == /* && $(command -v aws_completer) == /* ]]; then
 fi
 
 # rust
-if [[ $(command -v cargo) == /* ]]; then
-    export PATH=$HOME/.cargo/bin:$PATH
+if (( $+commands[cargo] )); then
+    path+=$HOME/.cargo/bin:$PATH
 fi
 
 # neovim
-if [[ $(command -v nvim) == /* ]]; then
+if (( $+commands[nvim] )); then
     export EDITOR="nvim"
 fi
 
 # tmux
-if [[ $(command -v tmux) == /* ]]; then
+if (( $+commands[tmux] )); then
     alias tm="[[ ! -v TMUX ]] && ( tmux ls &>/dev/null && tmux attach || tmux )"
 fi
 
 # ruby
-if [[ $(command -v ruby) == /* ]]; then
-    export PATH=$PATH:$(gem env user_gemhome)/bin
+if (( $+commands[ruby] )); then
+    path+=$(gem env user_gemhome)/bin
 fi
 
