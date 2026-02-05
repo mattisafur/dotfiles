@@ -83,7 +83,7 @@ if (( $+commands[git] )); then
     alias gl="git log"
     alias glg="git log --graph"
     alias glga="git log --graph --all"
-    alias glgao="git log --graph -all --oneline"
+    alias glgao="git log --graph --all --oneline"
     alias gm="git merge"
     alias gp="git pull"
     alias gpa="git pull --all"
