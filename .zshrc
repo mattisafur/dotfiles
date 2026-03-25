@@ -10,7 +10,7 @@ setopt GLOB_DOTS             # inlude hidden filed in glob
 setopt AUTO_PUSHD            # automatically pushd on cd commands
 unsetopt LIST_BEEP           # disable bell on completion
 
-typeset -U path # make entries in PATH unique
+typeset -U path  # make entries in PATH unique
 
 # history
 setopt SHARE_HISTORY         # share history between sessions
@@ -61,7 +61,7 @@ alias fgrep="fgrep --color"
 alias rgrep="rgrep --color"
 alias diff="diff --color"
 alias ip="ip --color=auto"
-alias watch="watch --color"
+alias watch="watch --color "  # appending space for handling aliases
 
 
 # #################################
