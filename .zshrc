@@ -255,6 +255,13 @@ fi
 # linkerd
 if [[ -d "$HOME/.linkerd2/bin" ]]; then
     path+=$HOME/.linkerd2/bin
+
+    _complete_linkerd() {
+        unfunction $0
+        source <(linkerd completion zsh)
+        _complete $0
+    }
+    compdef _complete_linkerd linkerd
 fi
 
 # rust
