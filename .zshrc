@@ -10,6 +10,8 @@ setopt GLOB_DOTS             # inlude hidden filed in glob
 setopt AUTO_PUSHD            # automatically pushd on cd commands
 unsetopt LIST_BEEP           # disable bell on completion
 
+typeset -U path # make entries in PATH unique
+
 # history
 setopt SHARE_HISTORY         # share history between sessions
 setopt HIST_IGNORE_SPACE     # don't add commands prefixed with space to history
@@ -219,6 +221,26 @@ if (( $+commands[talosctl] )); then
     alias tctl="talosctl"
 fi
 
+# terraform
+if (( $+commands[terraform] )); then
+    alias tf="terraform"
+    alias tfi="terraform init"
+    alias tfv="terraform validate"
+    alias tfa="terraform apply"
+    alias tfp="terraform plan"
+    alias tfd="terraform destroy"
+fi
+
+# opentofu
+if (( $+commands[opentofu] )); then
+    alias otf="opentofu"
+    alias otfi="opentofu init"
+    alias otfv="opentofu validate"
+    alias otfa="opentofu apply"
+    alias otfp="opentofu plan"
+    alias otfd="opentofu destroy"
+fi
+
 # aws cli
 if (( $+commands[aws] && $+commands[aws_completer] )); then
     _complete_aws() {
@@ -229,9 +251,14 @@ if (( $+commands[aws] && $+commands[aws_completer] )); then
     compdef _complete_aws aws
 fi
 
+# linkerd
+if [[ -d "$HOME/.linkerd2/bin" ]]; then
+    path+=$HOME/.linkerd2/bin
+fi
+
 # rust
 if (( $+commands[cargo] )); then
-    path+=$HOME/.cargo/bin:$PATH
+    path+=$HOME/.cargo/bin
 fi
 
 # neovim
