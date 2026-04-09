@@ -61,7 +61,6 @@ alias fgrep="fgrep --color"
 alias rgrep="rgrep --color"
 alias diff="diff --color"
 alias ip="ip --color=auto"
-alias watch="watch --color "  # appending space for handling aliases
 
 
 # #################################
