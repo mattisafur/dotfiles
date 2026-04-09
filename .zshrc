@@ -176,6 +176,8 @@ if (( $+commands[kubectl] )); then
     alias kl="kubectl logs"
     alias klf="kubectl logs --follow"
     alias kpf="kubectl port-forward"
+    alias kvalc="kubectl apply --dry-run=client"
+    alias kvals="kubectl apply --dry-run=server"
 fi
 
 # helm
