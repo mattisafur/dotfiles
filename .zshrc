@@ -41,8 +41,8 @@ autoload -Uz promptinit && promptinit && prompt adam1
 bindkey -e
 bindkey "^[[1;5C" forward-word    # ctrl + ->
 bindkey "^[[1;5D" backward-word   # ctrl + <-
-bindkey "^[[1~" beginning-of-line # Home
-bindkey "^[[4~" end-of-line       # End
+bindkey "^[[H" beginning-of-line  # Home
+bindkey "^[[F" end-of-line        # End
 
 # general aliases
 alias lsa="ls -a"
