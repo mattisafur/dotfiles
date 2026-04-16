@@ -39,6 +39,7 @@ autoload -Uz promptinit && promptinit && prompt adam1
 
 # keybinds
 bindkey -e
+bindkey "^[[3~" delete-char       # Delete
 bindkey "^[[1;5C" forward-word    # ctrl + ->
 bindkey "^[[1;5D" backward-word   # ctrl + <-
 bindkey "^[[H" beginning-of-line  # Home
