@@ -31,9 +31,10 @@ fi
 # completion
 autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
-zstyle ':completion:*:*:*:*:*' menu select               # allow completion selection using arrow keys
-zstyle ':completion:*' format 'Completing %d'            # add completion infomation to suggestions
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"  # colorize completion
+zstyle ':completion:*:*:*:*:*' menu select                       # make completion selection interactive
+zstyle ':completion:*' group-name ''                             # group completions
+zstyle ':completion:*:descriptions' format '%B%d%b'              # display completion group names when completing
+zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"  # colorize completion
 
 # prompt
 autoload -U promptinit && promptinit && prompt adam1
