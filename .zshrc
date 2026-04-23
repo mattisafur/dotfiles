@@ -10,7 +10,8 @@ setopt GLOB_DOTS             # inlude hidden filed in glob
 setopt AUTO_PUSHD            # automatically pushd on cd commands
 unsetopt LIST_BEEP           # disable bell on completion
 
-typeset -U path  # make entries in PATH unique
+# make entries in PATH unique
+typeset -U path
 
 # history
 setopt SHARE_HISTORY         # share history between sessions
