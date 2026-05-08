@@ -46,9 +46,14 @@ bindkey "^[[1;5C" forward-word    # ctrl + ->
 bindkey "^[[1;5D" backward-word   # ctrl + <-
 bindkey "^[[H" beginning-of-line  # Home
 bindkey "^[[F" end-of-line        # End
-
-autoload -U up-line-or-beginning-search && bindkey "^[[5~" up-line-or-beginning-search      # PageUp
-autoload -U down-line-or-beginning-search && bindkey "^[[6~" down-line-or-beginning-search  # PageDown
+# PageUp
+autoload -U up-line-or-beginning-search && \
+    zle -N up-line-or-beginning-search && \
+    bindkey "^[[5~" up-line-or-beginning-search
+# PageDown
+autoload -U down-line-or-beginning-search && \
+    zle -N down-line-or-beginning-search && \
+    bindkey "^[[6~" down-line-or-beginning-search
 
 # general aliases
 alias lsa="ls -a"
