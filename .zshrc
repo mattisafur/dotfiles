@@ -291,6 +291,11 @@ if (( $+commands[tmux] )); then
     alias tm="[[ ! -v TMUX ]] && ( tmux ls &>/dev/null && tmux attach || tmux )"
 fi
 
+# tree
+if (( $+commands[tree] )); then
+    alias treeg="tree --gitignore"
+fi
+
 # ruby
 if (( $+commands[ruby] )); then
     path+=$(gem env user_gemhome)/bin
