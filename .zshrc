@@ -296,6 +296,13 @@ if (( $+commands[tree] )); then
     alias treeg="tree --gitignore"
 fi
 
+# npm
+if (( $+commands[npm] )); then
+    alias n="npm"
+    alias ni="npm install"
+    alias nr="npm run"
+fi
+
 # ruby
 if (( $+commands[ruby] )); then
     path+=$(gem env user_gemhome)/bin
