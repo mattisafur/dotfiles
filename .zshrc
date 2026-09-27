@@ -45,7 +45,9 @@ bindkey "^[[3~" delete-char       # Delete
 bindkey "^[[1;5C" forward-word    # ctrl + ->
 bindkey "^[[1;5D" backward-word   # ctrl + <-
 bindkey "^[[H" beginning-of-line  # Home
+bindkey "^[[1~" beginning-of-line # Home
 bindkey "^[[F" end-of-line        # End
+bindkey "^[[4~" end-of-line       # End
 # PageUp
 autoload -U up-line-or-beginning-search && \
     zle -N up-line-or-beginning-search && \
@@ -77,6 +79,10 @@ alias ip="ip --color=auto"
 # #################################
 # ## Tool specific configuration ##
 # #################################
+
+if (( $+commands[python] )); then
+    alias pysource='() {source $1/bin/activate}'
+fi
 
 # git
 if (( $+commands[git] )); then
@@ -167,6 +173,7 @@ if (( $+commands[kubectl] )); then
     alias k="kubectl"
     alias ka="kubectl apply"
     alias kc="kubectl create"
+    alias kcd="kubectl cordon"
     alias kconf="kubectl config"
     alias kconfcurr="kubectl config current-context"
     alias kconfns="kubectl config set-context --current --namespace"
@@ -174,6 +181,7 @@ if (( $+commands[kubectl] )); then
     alias kd="kubectl describe"
     alias kdbg="kubectl debug"
     alias kdel="kubectl delete"
+    alias kdr="kubectl drain"
     alias ke="kubectl edit"
     alias kex="kubectl exec"
     alias kexp="kubectl explain"
@@ -186,6 +194,8 @@ if (( $+commands[kubectl] )); then
     alias kl="kubectl logs"
     alias klf="kubectl logs --follow"
     alias kpf="kubectl port-forward"
+    alias kr="kubectl run"
+    alias kucd="kubectl uncordon"
     alias kvalc="kubectl apply --dry-run=client"
     alias kvals="kubectl apply --dry-run=server"
 fi
@@ -234,6 +244,16 @@ if (( $+commands[talosctl] )); then
     alias tctl="talosctl"
 fi
 
+# kompose
+if (( $+commands[kompose] )); then
+    _complete_kompose() {
+        unfunction $0
+        source <(kompose completion zsh)
+        _complete $@
+    }
+    compdef _complete_kompose kompose
+fi
+
 # terraform
 if (( $+commands[terraform] )); then
     alias tf="terraform"
@@ -274,6 +294,11 @@ if [[ -d "$HOME/.linkerd2/bin" ]]; then
         _complete $0
     }
     compdef _complete_linkerd linkerd
+fi
+
+# go
+if (( $+commands[go] )); then
+    path+=$HOME/go/bin
 fi
 
 # rust
