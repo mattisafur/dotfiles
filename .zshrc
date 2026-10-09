@@ -205,6 +205,7 @@ if (( $+commands[helm] )); then
     alias h="helm"
     alias hg="helm get"
     alias hi="helm install"
+    alias hiw="helm install --watch"
     alias hls="helm list"
     alias hp="helm pull"
     alias hpu="helm pull --untar"
@@ -214,6 +215,7 @@ if (( $+commands[helm] )); then
     alias htd="helm template --debug"
     alias hu="helm upgrade"
     alias hui="helm upgrade --install"
+    alias huiw="helm upgrade --install --watch"
     alias hunin="helm uninstall"
 
     alias hrep="helm repo"
