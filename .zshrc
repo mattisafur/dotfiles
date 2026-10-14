@@ -190,7 +190,6 @@ if (( $+commands[kubectl] )); then
     alias kgeverything='kubectl get $(kubectl api-resources --verbs=list --output name | tr "\n" "," | sed "s/,$//")'
     alias kgeverythingnamespaced='kubectl get $(kubectl api-resources --verbs=list --output name --namespaced | tr "\n" "," | sed "s/,$//")'
     alias kgsd="kubectl get secrets --output jsonpath='{.data}'"
-    alias kgsdd='() { kubectl get secrets $1 --output jsonpath=".data.$2" | base64 --decode && echo }'
     alias kl="kubectl logs"
     alias klf="kubectl logs --follow"
     alias kpf="kubectl port-forward"
