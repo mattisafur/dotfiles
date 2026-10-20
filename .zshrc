@@ -80,6 +80,7 @@ alias ip="ip --color=auto"
 # ## Tool specific configuration ##
 # #################################
 
+# python
 if (( $+commands[python] )); then
     alias pysource='() {source $1/bin/activate}'
 fi
